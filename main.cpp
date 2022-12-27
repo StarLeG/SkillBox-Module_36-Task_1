@@ -108,7 +108,7 @@ int main(int argc, char* argv[])
 	greenLeD.setFixedSize(200,250);
 	greenLeD.move(1000,100);
 
-	QObject::connect(&slider,&QSlider::valueChanged,);
+	//QObject::connect(&slider,&QSlider::valueChanged,);
 
 	greenLeD.setColor(15);
 
