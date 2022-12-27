@@ -16,20 +16,23 @@ public:
 	void paintEvent(QPaintEvent* e);
 	QSize sizeHint() const override;
 	QSize minimumSizeHint() const override;
-	void setColor(int newValue);
 
 
-public slots:
+
+private slots:
 	void setYellow();
 	void setRed();
 	void setGreen();
+public slots:
+	void setColor(int newValue);
 
 private:
 	QPixmap mCurretCirclePixmap;
 	QPixmap mRedCirclePixmap;
 	QPixmap mGreenCirclePixmap;
 	QPixmap mYellowCirclePixmap;
-	int slaiderValue = 0;
+
+
 };
 
 ImageCircle::ImageCircle(QWidget* parent)
@@ -79,6 +82,7 @@ void ImageCircle::setYellow()
 
 void ImageCircle::setColor(int newValue)
 {
+
 	if(newValue >= 0 && newValue < 33)
 	{
 		ImageCircle::setGreen();
@@ -110,8 +114,8 @@ int main(int argc, char* argv[])
 
 
 	ImageCircle greenLeD(nullptr);
-	greenLeD.setFixedSize(200,250);
-	greenLeD.move(1000,100);
+	greenLeD.setFixedSize(250,250);
+
 
 	auto* layout = new QVBoxLayout(windows);
 	layout->addWidget(&greenLeD);
@@ -119,7 +123,7 @@ int main(int argc, char* argv[])
 
 
 
-
+//	QObject::connect(&slider,&QSlider::valueChanged,[&slider,&greenLeD]());
 
 
 
