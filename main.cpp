@@ -20,11 +20,12 @@ public:
 
 
 private slots:
+
+public slots:
+
 	void setYellow();
 	void setRed();
 	void setGreen();
-public slots:
-	void setColor(int newValue);
 
 private:
 	QPixmap mCurretCirclePixmap;
@@ -80,26 +81,6 @@ void ImageCircle::setYellow()
 	update();
 }
 
-void ImageCircle::setColor(int newValue)
-{
-
-	if(newValue >= 0 && newValue < 33)
-	{
-		ImageCircle::setGreen();
-		return;
-	}
-	if(newValue >= 33 && newValue < 66)
-	{
-		ImageCircle::setYellow();
-		return;
-	}
-
-	if(newValue >= 66 && newValue <= 99)
-	{
-		ImageCircle::setRed();
-		return;
-	}
-}
 
 int main(int argc, char* argv[])
 {
@@ -123,7 +104,18 @@ int main(int argc, char* argv[])
 
 
 
-//	QObject::connect(&slider,&QSlider::valueChanged,[&slider,&greenLeD]());
+	QObject::connect(slider, &QSlider::valueChanged, [&greenLeD, slider](int newValue)
+	{
+
+			if(newValue >=0 && newValue < 33)
+				greenLeD.setGreen();
+			else if(newValue >=33 && newValue < 66)
+				greenLeD.setYellow();
+			else if(newValue >=66 && newValue <= 99)
+				greenLeD.setRed();
+
+
+	});
 
 
 
