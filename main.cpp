@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QVBoxLayout>
 
 
 class ImageCircle : public QPushButton
@@ -98,24 +99,32 @@ void ImageCircle::setColor(int newValue)
 
 int main(int argc, char* argv[])
 {
+
 	QApplication a(argc, argv);
-	auto* slider = new QSlider(Qt::Horizontal);
+	QWidget* windows = new QWidget;
+	windows->resize(200,250);
+
+	auto* slider = new QSlider(Qt::Horizontal,windows);
 	slider->setMinimum(0);
 	slider->setMaximum(99);
-	slider->resize(200,50);
+
 
 	ImageCircle greenLeD(nullptr);
 	greenLeD.setFixedSize(200,250);
 	greenLeD.move(1000,100);
 
-	//QObject::connect(&slider,&QSlider::valueChanged,);
+	auto* layout = new QVBoxLayout(windows);
+	layout->addWidget(&greenLeD);
+	layout->addWidget(slider);
 
-	greenLeD.setColor(15);
 
 
 
-	greenLeD.show();
-	slider->show();
+
+
+
+
+	windows->show();
 	QApplication::exec();
 }
 #include "main.moc"
