@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
 
 
 
-	QObject::connect(slider, &QSlider::valueChanged, [&greenLeD, slider](int newValue)
+	QObject::connect(slider, &QSlider::valueChanged, [&greenLeD](int newValue)
 	{
 
 			if(newValue >=0 && newValue < 33)
